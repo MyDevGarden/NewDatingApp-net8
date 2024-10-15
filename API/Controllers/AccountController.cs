@@ -32,7 +32,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         };
     }
 
-    [HttpPost("login")]
+    [HttpPost("login")]  //acount/login
     public async Task<ActionResult<UserDto>>Login(LoginDto logindto)
     {
         var user = await context.Users.FirstOrDefaultAsync(x => 
