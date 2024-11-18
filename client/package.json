@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
     "font-awesome": "^4.7.0",
+    "ng-gallery": "^12.0.0",
     "ngx-bootstrap": "^12.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
@@ -29,7 +30,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.8",
-    "@angular/cli": "^17.3.8",
+    "@angular/cli": "^17.3.11",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
