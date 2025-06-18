@@ -16,6 +16,10 @@ public class DataContext(DbContextOptions options) : IdentityDbContext<AppUser, 
 
     public DbSet<Message> Messages { get; set; }
 
+    public DbSet<Group> Groups { get; set; }
+
+    public DbSet<Connection> Connections { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -32,8 +36,8 @@ public class DataContext(DbContextOptions options) : IdentityDbContext<AppUser, 
             .HasForeignKey(ur => ur.RoleId)
             .IsRequired();
 
-        builder.Entity<UserLike>() 
-           .HasKey(k => new {k.SourceUserId, k.TargetUserId});
+        builder.Entity<UserLike>()
+           .HasKey(k => new { k.SourceUserId, k.TargetUserId });
 
         builder.Entity<UserLike>()
             .HasOne(s => s.SourceUser)
@@ -42,13 +46,13 @@ public class DataContext(DbContextOptions options) : IdentityDbContext<AppUser, 
             .OnDelete(DeleteBehavior.Cascade);
 
         builder.Entity<UserLike>()
-            .HasOne(s=> s.TargetUser)
+            .HasOne(s => s.TargetUser)
             .WithMany(l => l.LikedByUsers)
             .HasForeignKey(s => s.TargetUserId)
             .OnDelete(DeleteBehavior.Cascade);
-            
-       
-        
+
+
+
         builder.Entity<Message>()
             .HasOne(x => x.Recipient)
             .WithMany(x => x.MessagesReceived)
@@ -58,7 +62,7 @@ public class DataContext(DbContextOptions options) : IdentityDbContext<AppUser, 
             .HasOne(x => x.Sender)
             .WithMany(x => x.MessagesSent)
             .OnDelete(DeleteBehavior.Restrict);
-           
+
     }
 
 }
